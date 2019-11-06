@@ -1,0 +1,63 @@
+SQL CODES EXECUTED IN MYSQL
+
+create database workerDatabase;
+use workerDatabase;
+
+CREATE USER sashank IDENTIFIED BY 'Hello$123';
+
+
+grant usage on *.* to sashank@localhost identified by 'Hello$123';
+grant all privileges on workerDatabase.* to sashank@localhost;
+
+CREATE TABLE workerTable(
+    	workerID INT NOT NULL AUTO_INCREMENT,	
+    	name VARCHAR(30) NOT NULL,
+    	longitude FLOAT NOT NULL,		
+    	latitude FLOAT NOT NULL,
+    	skillLevel VARCHAR(30) NOT NULL,	
+    	availability INT NOT NULL,			
+    	emailID VARCHAR(30) NOT NULL,		
+    	phoneNumber VARCHAR(10) NOT NULL,
+    	workerStartTime TIME NOT NULL,
+            workerFinishTime TIME NOT NULL,
+    	jobsDone INT NOT NULL,
+    	ratingPoints INT NOT NULL,
+	workingOnJob INT NOT NULL DEFAULT 0,	
+    	PRIMARY KEY (workerID)
+	);
+
+create database jobDatabase;
+use jobDatabase;
+grant usage on *.* to dewang@localhost identified by 'Hello$123';
+grant all privileges on jobDatabase.* to dewang@localhost;
+
+CREATE TABLE jobTable1(
+    	jobID INT NOT NULL AUTO_INCREMENT,
+    	jobName VARCHAR(30) NOT NULL,
+	jobDescription VARCHAR(200) NOT NULL,
+	highSkilled INT(10) UNSIGNED NOT NULL,
+	mediumSkilled INT(10) UNSIGNED NOT NULL,
+	lowSkilled INT(10) UNSIGNED NOT NULL,
+	latitude DOUBLE NOT NULL,
+	longitude DOUBLE NOT NULL,
+	startTime TIME NOT NULL,
+	amount int(11) NOT NULL,
+	jobRating int(11) NOT NULL,
+	jobPriority int(11) NOT NULL,
+	voteCount int(11) NOT NULL,
+	jobStatus int(11) NOT NULL,		#0 - not complete #1 - ongoing #2 - complete
+	startDate DATE NOT NULL DEFAULT '2019-04-10',	
+	PRIMARY KEY (jobID)
+	);
+
+create database feedbackDatabase;
+use feedbackDatabase;
+
+grant all privileges on feedbackDatabase.* to dewang@localhost;
+CREATE TABLE feedbackTable1(    	
+    	name VARCHAR(25),
+		jobName VARCHAR(30),
+    	rating INT(11),
+    	remarks VARCHAR(500),
+    	ipAddress VARCHAR(50)
+    	);
